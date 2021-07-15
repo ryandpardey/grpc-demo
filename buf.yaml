@@ -1,0 +1,13 @@
+version: v1beta1
+name: buf.build/user/repo
+lint:
+  use:
+    - DEFAULT
+deps:
+  - buf.build/beta/googleapis
+build:
+  roots:
+    - proto
+breaking:
+  use:
+    - FILE

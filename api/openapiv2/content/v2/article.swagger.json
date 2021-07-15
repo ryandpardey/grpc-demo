@@ -1,0 +1,138 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "content/v2/article.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ArticleService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v2Article": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Required.\nUnique identifier for an article."
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v2Author"
+          },
+          "description": "Required.\nA list of authors for an article."
+        },
+        "content": {
+          "type": "string",
+          "description": "Required.\nHTML content for an article."
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v2Image"
+          },
+          "description": "Images to embed in the article content."
+        }
+      },
+      "description": "Article represents a news article."
+    },
+    "v2Author": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Required.\nUnique identifier for an author."
+        },
+        "name": {
+          "type": "string",
+          "description": "Required.\nName is the author's name as displayed on the article byline."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email is an author's  email address."
+        },
+        "image": {
+          "$ref": "#/definitions/v2Image",
+          "description": "Image is an author's profile image."
+        }
+      },
+      "description": "Author is an article author."
+    },
+    "v2GetArticleResponse": {
+      "type": "object",
+      "properties": {
+        "article": {
+          "$ref": "#/definitions/v2Article"
+        }
+      },
+      "description": "ArticleService.GetArticleResponse response."
+    },
+    "v2Image": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Required.\nUnique identifier for an image."
+        },
+        "description": {
+          "type": "string",
+          "description": "Text describing image content."
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Required.\nHeight in pixels."
+        },
+        "mediaType": {
+          "type": "string",
+          "description": "Required.\nMust be one of [\"image/jpeg\", \"image/gif\", \"image/png\"].\nMedia type indicates the file format."
+        },
+        "width": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Required.\nWidth in pixels."
+        }
+      },
+      "description": "Image is a representation of an image."
+    }
+  }
+}

@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package content.v2;
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/ryandpardey/grpc-demo/golang/content/v2";
+
+// Article service manages articles.
+service ArticleService {
+  // Gets an article.
+  rpc GetArticle (GetArticleRequest) returns (GetArticleResponse);
+}
+
+// ArticleService.GetArticle request.
+message GetArticleRequest {
+  string id = 1;
+}
+
+// ArticleService.GetArticleResponse response.
+message GetArticleResponse {
+  Article article = 1;
+}
+
+// Article represents a news article.
+message Article {
+  // Required.
+  // Unique identifier for an article.
+  string id = 1;
+
+  // Required.
+  // A list of authors for an article.
+  repeated Author authors = 2;
+
+  // Required.
+  // HTML content for an article.
+  string content = 3;
+
+  // Images to embed in the article content.
+  repeated Image images = 4;
+}
+
+// Author is an article author.
+message Author {
+  // Required.
+  // Unique identifier for an author.
+  string id = 1;
+
+  // Required.
+  // Name is the author's name as displayed on the article byline.
+  string name = 2;
+
+  // Email is an author's  email address.
+  string email = 3;
+
+  // Image is an author's profile image.
+  Image image = 5;
+
+}
+
+// Image is a representation of an image.
+message Image {
+  // Required.
+  // Unique identifier for an image.
+  string id = 1;
+
+  // Text describing image content.
+  string description = 2;
+
+  // Required.
+  // Height in pixels.
+  int32 height = 3;
+
+  // Required.
+  // Must be one of ["image/jpeg", "image/gif", "image/png"].
+  // Media type indicates the file format.
+  string media_type = 4 [json_name = "mediaType"];
+
+  // Required.
+  // Width in pixels.
+  int32 width = 5;
+}
