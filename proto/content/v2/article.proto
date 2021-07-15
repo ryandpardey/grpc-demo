@@ -29,11 +29,9 @@ message Article {
   // Unique identifier for an article.
   string id = 1;
 
-  // Required.
   // A list of authors for an article.
   repeated Author authors = 2;
 
-  // Required.
   // HTML content for an article.
   string content = 3;
 
@@ -47,7 +45,6 @@ message Author {
   // Unique identifier for an author.
   string id = 1;
 
-  // Required.
   // Name is the author's name as displayed on the article byline.
   string name = 2;
 
@@ -65,19 +62,17 @@ message Image {
   // Unique identifier for an image.
   string id = 1;
 
-  // Text describing image content.
-  string description = 2;
-
-  // Required.
-  // Height in pixels.
-  int32 height = 3;
-
   // Required.
   // Must be one of ["image/jpeg", "image/gif", "image/png"].
   // Media type indicates the file format.
   string media_type = 4 [json_name = "mediaType"];
 
-  // Required.
+  // Text describing image content.
+  string description = 2;
+
+  // Height in pixels.
+  int32 height = 3;
+
   // Width in pixels.
   int32 width = 5;
 }

@@ -59,11 +59,11 @@
           "items": {
             "$ref": "#/definitions/v2Author"
           },
-          "description": "Required.\nA list of authors for an article."
+          "description": "A list of authors for an article."
         },
         "content": {
           "type": "string",
-          "description": "Required.\nHTML content for an article."
+          "description": "HTML content for an article."
         },
         "images": {
           "type": "array",
@@ -84,7 +84,7 @@
         },
         "name": {
           "type": "string",
-          "description": "Required.\nName is the author's name as displayed on the article byline."
+          "description": "Name is the author's name as displayed on the article byline."
         },
         "email": {
           "type": "string",
@@ -113,6 +113,10 @@
           "type": "string",
           "description": "Required.\nUnique identifier for an image."
         },
+        "mediaType": {
+          "type": "string",
+          "description": "Required.\nMust be one of [\"image/jpeg\", \"image/gif\", \"image/png\"].\nMedia type indicates the file format."
+        },
         "description": {
           "type": "string",
           "description": "Text describing image content."
@@ -120,16 +124,12 @@
         "height": {
           "type": "integer",
           "format": "int32",
-          "description": "Required.\nHeight in pixels."
-        },
-        "mediaType": {
-          "type": "string",
-          "description": "Required.\nMust be one of [\"image/jpeg\", \"image/gif\", \"image/png\"].\nMedia type indicates the file format."
+          "description": "Height in pixels."
         },
         "width": {
           "type": "integer",
           "format": "int32",
-          "description": "Required.\nWidth in pixels."
+          "description": "Width in pixels."
         }
       },
       "description": "Image is a representation of an image."
